@@ -43,7 +43,3 @@ completely fails to detect the minority class.
 
 - 📘 [GFG: Dealing with Imbalanced Data](https://www.geeksforgeeks.org/how-to-handle-imbalanced-classes-in-machine-learning/)
 
-
----
-
-📁 This file is reusable for any classification project where class imbalance is a risk.
