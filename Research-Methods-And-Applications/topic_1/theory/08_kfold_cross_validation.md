@@ -1,3 +1,4 @@
+# 🧠 08 K-Fold Cross-Validation
 
 # 🔁 K-Fold Cross-Validation – Theory & Application
 
@@ -45,27 +46,34 @@ Final score = average of all 5 test scores
 
 ---
 
-## 📌 Example
+## 📌 Example Snippet (sklearn)
 
-- Logistic Regression is trained on 5 different train/test splits
-- The best-performing model is selected based on test scores
-- Balancing (`class_weight='balanced'`) is used to address class imbalance
+```python
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+from sklearn.linear_model import LogisticRegression
+
+X, y = ...  # features and labels
+
+kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+model = LogisticRegression(class_weight='balanced', max_iter=1000)
+
+scores = cross_val_score(model, X, y, cv=kf, scoring='f1_macro')
+print("F1 (macro) per fold:", scores)
+print("Mean F1 (macro):", scores.mean())
+```
 
 ---
 
-## 🧠 Pro Tip
+## 🧠 Pro Tips
 
-For classification tasks with imbalanced classes, use:
-
-```python
-from sklearn.model_selection import StratifiedKFold
-kf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
-```
+- For classification with imbalance: **use `StratifiedKFold`**
+- Report **mean ± std** of metrics across folds
+- Keep a **hold-out test set** if you will tune hyperparameters heavily
 
 ---
 
 ## 🔗 Further Reading
 
-- 📘 [Scikit-learn Docs – KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
-- 📘 [Stratified K-Fold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
-
+- 📘 [Scikit-learn: KFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.KFold.html)
+- 📘 [Scikit-learn: StratifiedKFold](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html)
+- 📘 [GFG: K-Fold CV](https://www.geeksforgeeks.org/machine-learning/k-fold-cross-validation-in-machine-learning/)

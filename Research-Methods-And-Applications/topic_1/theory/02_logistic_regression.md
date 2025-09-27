@@ -1,3 +1,5 @@
+# 🧠 02 Logistic Regression
+
 # 📈 Logistic Regression – Theory & Application
 
 **Logistic Regression** is a supervised learning algorithm used for **binary classification** problems. It predicts the
@@ -25,12 +27,12 @@
 - **Prediction Formula:**  
   P(y = 1 | x) = 1 / (1 + e^-(b₀ + b₁x₁ + ... + bₙxₙ))
 
-The output is a **probability** between 0 and 1, typically converted to class 0 or 1 using a **threshold** (commonly 0.5).
+The output is a **probability** between 0 and 1, typically converted to class 0 or 1 using a **threshold** (commonly
+0.5).
 
+---
 
 ## 📊 Evaluation Metrics
-
-Logistic regression models are typically evaluated using:
 
 - **Accuracy**: Overall correctness
 - **Precision**: Correctness of predicted positives
@@ -72,6 +74,6 @@ Logistic regression can be sensitive to imbalanced datasets.
 
 ## 🔗 Further Reading
 
-- 📘 [GFG: Understanding Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/) <br>
-- 📘 [GFG: Linear vs Logistic Regression](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression-vs-logistic-regression/) <br>
-- 📘 [GFG: Linear Regression Overview](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/) <br>
+- 📘 [GFG: Understanding Logistic Regression](https://www.geeksforgeeks.org/machine-learning/understanding-logistic-regression/)
+- 📘 [GFG: Linear vs Logistic Regression](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression-vs-logistic-regression/)
+- 📘 [GFG: Linear Regression Overview](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/)
