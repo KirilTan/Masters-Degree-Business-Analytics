@@ -1,7 +1,7 @@
 # Methods and Algorithms for Business Analytics on Big Data
 
 ## 📘 Course Overview
-This repository contains structured learning materials, implementations, and notes for the master's-level course **"Methods and Algorithms for Business Analytics on Big Data"**, part of the program *Modeling Big Data in Business and Finance* at Sofia University *St. Kliment Ohridski*.
+This repository contains exercises and program-mode scripts for the master's-level course **"Methods and Algorithms for Business Analytics on Big Data"**, part of the program *Modeling Big Data in Business and Finance* at Sofia University *St. Kliment Ohridski*.
 
 The course focuses on:
 - understanding **Big Data concepts and lifecycle**
@@ -64,31 +64,50 @@ Although newer tools exist, consistency and methodological understanding are pri
 ```text
 Methods-and-Algorithms-for-Business-Analytics-on-Big-Data/
 │
-├── datasets/        # Raw and processed datasets + documentation
-│   ├── raw/
-│   ├── processed/
-│   └── README.md
+├── datasets/ # Raw and processed datasets + documentation
+│ ├── raw/
+│ ├── processed/
+│ └── README.md
 │
-├── notebooks/       # Jupyter notebooks for exploration & intuition
+├── notebooks/ # Jupyter notebooks for exploration & intuition
 │
-├── resources/       # Official lecture slides, PDFs, homework descriptions
-│   ├── HW_1/
-│   ├── HW_2/
-│   └── Topic*_*/
+├── resources/ # Official lecture slides, PDFs, homework descriptions
 │
-├── scripts/         # Clean, reusable Python implementations
+├── scripts/ # Python scripts (program mode)
+│ ├── exercises/ # Practice scripts
+│ ├── homework/ # Assignment scripts
+│ └── README.md
 │
-├── theory/          # Markdown notes with structured explanations
+├── theory/ # Markdown notes with structured explanations
 │
-└── README.md        # This file
+└── README.md # This file
 ```
+
+---
+
+## 🧪 Notebooks vs Scripts
+
+- **Notebooks** are used to _understand_, _explain_, and _visualize_ ideas
+- **Scripts** are used to _execute_, _practice_, and _reinforce_ them in program mode
+
+Both formats are used intentionally and serve different purposes.
+
+---
+
+## 📁 Datasets
+
+Datasets are separated into:
+- **raw/** → original, immutable data
+- **processed/** → cleaned or transformed data
+
+This separation ensures reproducibility and clarity of analytical decisions.
 
 ---
 
 ## 📘 How to Use This Repository
 - Start with **theory/** to understand concepts
 - Use **notebooks/** to see methods applied step-by-step
-- Refer to **scripts/** for clean algorithm implementations
+- Refer to **scripts/** for program-mode practice and homework solutions
 - Check **resources/** for original course materials
 - Use **datasets/** together with notebooks and scripts
 
