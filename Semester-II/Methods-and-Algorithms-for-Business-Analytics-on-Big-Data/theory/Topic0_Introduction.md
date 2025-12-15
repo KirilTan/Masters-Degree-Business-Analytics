@@ -1,5 +1,7 @@
 # Topic 0 - Introduction and Big Data Applications
 
+---
+
 ## 1️⃣ What Are Big Data?
 Big Data refers to datasets whose **size, complexity, and rate of generation** exceed the capabilities of traditional data-processing tools.
 
