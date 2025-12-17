@@ -167,3 +167,12 @@ In this course, the typical workflow is:
 ## 🔑 One-Sentence Explanation
 
 > Reading data means loading structured datasets correctly, understanding their structure, and preparing them for further analysis.
+
+---
+
+## 🔗 References & Further Reading
+
+- 📘 [pandas Documentation - Overview](https://pandas.pydata.org/docs/user_guide/index.html) <br>
+- 📘 [pandas Documentation - IO Tools (CSV & TXT)](https://pandas.pydata.org/docs/user_guide/io.html) <br>
+- 📘 [pandas Documentation - Missing Data](https://pandas.pydata.org/docs/user_guide/missing_data.html) <br>
+- 📘 [NumPy Documentation - Overview  ](https://numpy.org/doc/stable/user/whatisnumpy.html) <br>
