@@ -237,3 +237,11 @@ Generative AI can produce:
 
 > Big Data Analytics transforms large, fast, and diverse data into actionable business decisions using statistical and machine learning methods.
 
+---
+
+## 🔗 References & Further Reading
+
+- 📘 [Gartner. *Big Data Definition (3V Model)*](https://www.gartner.com/en) <br>
+- 📘 [Big Data Approach and its applications in Various Fields](https://www.sciencedirect.com/science/article/pii/S1877050919309986?via%3Dihub) <br>
+- 📘 [Big Data Analytics and Its Applications](https://arxiv.org/abs/1710.04135) <br>
+- 📘 [IBM. *What is Big Data Analytics?*  ](https://www.ibm.com/think/topics/big-data-analytics) <br>
