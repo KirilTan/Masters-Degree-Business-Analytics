@@ -1,184 +1,155 @@
 # Topic 2 – Linear Regression (Part 1: Concepts & Simple Linear Regression)
 
-This document introduces **linear regression** as it is used in the course *Methods and Algorithms for Business Analytics on Big Data*.
+---
 
-The focus is on **concepts, interpretation, and methodology**, not on mathematical derivations.
+## 1️⃣ Regression vs Classification
+
+In supervised machine learning, problems are divided into **regression** and **classification** tasks.
+
+* **Regression** → the dependent variable is **continuous**
+
+  * examples: sales, revenue, cost, demand
+
+* **Classification** → the dependent variable takes **discrete values (classes)**
+
+  * examples: churn / no churn, approve / reject
+
+In this topic, we focus on **regression problems**.
 
 ---
 
-## 1. Regression vs Classification
-
-In supervised machine learning, tasks are divided into two main categories:
-
-- **Regression** – the dependent variable (target) is **continuous**
-  - examples: sales, revenue, cost, demand, price
-
-- **Classification** – the dependent variable takes **discrete values (classes)**
-  - examples: churn / no churn, approve / reject, class A / B / C
-
-In this topic, we focus exclusively on **regression problems**.
-
----
-
-## 2. Structure of the Data
+## 2️⃣ Structure of the Data
 
 Data used for regression is assumed to be **structured in tabular form**:
 
-- **Rows** → observations
-- **Columns** → variables (features)
+* **Rows** → observations
+* **Columns** → variables (features)
 
 There is:
-- **one dependent variable** (usually denoted by `y`)
-- **one or more independent variables** (denoted by `X`)
+
+* one **dependent variable** (`y`)
+* one or more **independent variables** (`X`)
 
 The goal of regression is to model the relationship between `X` and `y`.
 
 ---
 
-## 3. Key Concepts and Terminology
+## 3️⃣ Key Concepts and Terminology
 
-The course distinguishes clearly between the following concepts:
+The course distinguishes between the following concepts:
 
-- **Model** – an abstract mathematical representation of a real process
-- **Modeling** – the process of constructing a model
-- **Method** – a general procedure for solving a model
-- **Algorithm** – a concrete, step-by-step implementation of a method
-- **Methodology** – a sequence of methods covering the entire analytical process
+* **Model** – abstract mathematical representation of a real process
+* **Modeling** – process of constructing a model
+* **Method** – general procedure for solving a model
+* **Algorithm** – concrete step-by-step implementation of a method
+* **Methodology** – sequence of methods covering the full analytical process
 
-In practice, Python libraries (such as scikit-learn) provide **algorithms** that implement well-known **methods** through a standard interface.
+In practice, Python libraries provide algorithms that implement methods through a standard interface.
 
 ---
 
-## 4. General Methodology for Data Analysis
+## 4️⃣ General Methodology for Data Analysis
 
-Throughout the course, the following general methodology is applied:
+Throughout the course, the following methodology is applied:
 
 1. Reading the data
-2. Preliminary data preprocessing (missing values, scaling, etc.)
-3. Choice of model and its parameters
-4. Splitting the data into training and test subsets
+2. Data preprocessing (missing values, scaling, etc.)
+3. Choice of model and parameters
+4. Splitting data into training and test sets
 5. Model evaluation
 
-Linear regression is one concrete realization of this general methodology.
+Linear regression is one concrete realization of this methodology.
 
 ---
 
-## 5. Simple Linear Regression
+## 5️⃣ Simple Linear Regression
 
-### 5.1 Model Definition
+### Model Definition
 
 In **simple linear regression**, the dependent variable `y` is modeled as a linear function of a single independent variable `x`:
 
-
+```
 y = a·x + b
+```
 
 where:
-- `a` is the **regression coefficient (slope)**
-- `b` is the **intercept**
 
-The objective of the model is to determine the values of `a` and `b` that best describe the observed data.
+* `a` is the **regression coefficient (slope)**
+* `b` is the **intercept**
 
----
-
-### 5.2 Training the Model
-
-Training a linear regression model means **estimating the coefficients** `a` and `b` using observed data.
-
-In scikit-learn, this is done using the method:
-
-```
-fit(X, y)
-```
-
-After training:
-- the model parameters are fixed
-- the model can be used for prediction
+The objective is to estimate `a` and `b` from observed data.
 
 ---
 
-### 5.3 Prediction
+## 6️⃣ Training and Prediction
 
-Once trained, the model can be applied to known or new values of `x`:
+Training a linear regression model means estimating the parameters `a` and `b` using data.
 
-```
-predict(X)
-```
+In scikit-learn:
 
-This produces:
-- `y_pred` – predicted values of the dependent variable
+* `fit(X, y)` → trains the model
+* `predict(X)` → produces predicted values `y_pred`
 
-These predictions are computed using the learned linear equation.
+After training, the model parameters are fixed and can be used for prediction.
 
 ---
 
-## 6. Model Parameters in scikit-learn
+## 7️⃣ Model Parameters in scikit-learn
 
-After training a `LinearRegression` model, its parameters are available as:
+After training a `LinearRegression` model, the parameters are available as:
 
-- `coef_` → regression coefficients
-- `intercept_` → intercept term
+* `coef_` → regression coefficients
+* `intercept_` → intercept term
 
 For simple linear regression:
-- `coef_` contains a single value (the slope)
-- `intercept_` contains the constant term
 
-These parameters fully define the learned linear model.
+* `coef_` contains one value (the slope)
+* `intercept_` contains the constant term
 
----
-
-## 7. Visual Interpretation
-
-Plotting plays an important role in understanding linear regression:
-
-- **Scatter plot** → shows the observed data points
-- **Regression line** → shows the model predictions
-
-The vertical distance between points and the regression line represents the **prediction error**.
-
-Visual inspection helps determine whether a linear model is appropriate for the data.
+Together, these parameters define the learned linear equation.
 
 ---
 
-## 8. Model Evaluation: R² (Coefficient of Determination)
+## 8️⃣ Visual Interpretation
 
-The quality of a linear regression model is commonly evaluated using **R²**.
+Plotting helps evaluate whether a linear model is appropriate:
+
+* **Scatter plot** → observed data points
+* **Regression line** → model predictions
+
+The vertical distance between points and the line represents the prediction error.
+
+---
+
+## 9️⃣ Model Evaluation: R²
+
+The quality of a linear regression model is commonly evaluated using **R² (coefficient of determination)**.
 
 R² measures:
-- the proportion of variance in `y` explained by the model
+
+* the proportion of variance in `y` explained by the model
 
 Interpretation:
-- R² = 1 → perfect fit
-- R² = 0 → no better than predicting the mean of `y`
-- R² < 0 → worse than predicting the mean
+
+* R² = 1 → perfect fit
+* R² = 0 → no better than predicting the mean
+* R² < 0 → worse than predicting the mean
 
 In scikit-learn, R² can be computed using:
 
-- `model.score(X, y)`
-- `r2_score(y, y_pred)`
+* `model.score(X, y)`
+* `r2_score(y, y_pred)`
 
 ---
 
-## 9. Limitations of Training Evaluation
+## 🔑 One-Sentence Explanation
 
-Evaluating a model on the same data used for training can be misleading.
-
-A high R² on training data does **not guarantee** good performance on unseen data.
-
-This motivates the use of:
-- train/test split
-- cross-validation
-
-These topics are covered in **Part 2**.
+> Linear regression models the relationship between a continuous dependent variable and one or more independent variables using a linear function.
 
 ---
 
-## 10. Transition to Part 2
+## 🔗 References & Further Reading
 
-In the next document, we extend linear regression by introducing:
-
-- train/test split
-- cross-validation (K-Fold)
-- model selection and comparison
-
-➡️ **Topic 2 – Linear Regression (Part 2: Validation & Generalization)**
+- 📘 [scikit-learn Documentation – Linear Regression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html) <br>
+- 📘 [GeeksForGeeks – Linear Regression](https://www.geeksforgeeks.org/machine-learning/ml-linear-regression/) <br>
 
