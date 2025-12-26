@@ -61,15 +61,13 @@ print("Columns:", df.columns.tolist(), "\n")
 # =========================
 # Clean data
 # =========================
-# Goal: ensure we have exactly columns X1, X2, X3, Y (numeric) for modeling.
-
 # 1) Strip spaces from column names (safety)
 df.columns = [c.strip() for c in df.columns]
 
-# 2) Rename last column to X3 (often appears as "Unnamed: 4")
+# 2) Rename last column to X3
 df = df.rename(columns={df.columns[-1]: "X3"})
 
-# 3) Drop Time column (case-insensitive)
+# 3) Drop Time column
 time_cols = [c for c in df.columns if c.lower() == "time"]
 df = df.drop(columns=time_cols, errors="ignore")
 
@@ -131,7 +129,7 @@ print()
 # - interaction terms (X1*X2, X1*X3, X2*X3, ...)
 # Then LinearRegression is fitted on those expanded features.
 
-degrees_to_try = [2, 3]   # you can extend this, but 2–3 is usually enough
+degrees_to_try = [x for x in range(1,11)]
 poly_results = []
 
 for d in degrees_to_try:
