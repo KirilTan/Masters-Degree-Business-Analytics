@@ -167,6 +167,59 @@ print(f"Best Test R²: {best_r2:.4f}\n")
 
 # %%
 # =========================
+# Outlier removal (TRAIN ONLY, based on residuals)
+# =========================
+# Train once, find the largest residuals on TRAIN, drop them, refit, re-evaluate on same test set.
+
+# Split (same as before)
+X_best = df[best_features]
+y = df[target]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X_best, y, test_size=test_size, random_state=random_state
+)
+
+# Fit initial model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Residuals on TRAIN only
+train_pred = model.predict(X_train)
+train_residuals = y_train - train_pred
+
+# Define outliers as residuals beyond k standard deviations
+k = 3.0
+threshold = k * train_residuals.std()
+
+outlier_mask = train_residuals.abs() > threshold
+num_outliers = outlier_mask.sum()
+
+print(f"Train residual std: {train_residuals.std():.2f}")
+print(f"Outlier threshold (k={k}): {threshold:.2f}")
+print(f"Outliers detected in TRAIN: {num_outliers}\n")
+
+# Drop outliers from TRAIN only
+X_train_clean = X_train.loc[~outlier_mask]
+y_train_clean = y_train.loc[~outlier_mask]
+
+# Refit on cleaned training data
+model_clean = LinearRegression()
+model_clean.fit(X_train_clean, y_train_clean)
+
+# Evaluate on the ORIGINAL test set (untouched)
+y_pred_clean = model_clean.predict(X_test)
+r2_clean = r2_score(y_test, y_pred_clean)
+
+print(f"R² (test set) BEFORE cleaning: {r2_score(y_test, model.predict(X_test)):.4f}")
+print(f"R² (test set) AFTER  cleaning: {r2_clean:.4f}\n")
+
+print("Coefficients (cleaned):", dict(zip(best_features, model_clean.coef_)))
+print("Intercept (cleaned):", model_clean.intercept_)
+print()
+
+
+# %%
+# =========================
 # Train best model (on the same train/test split) + interpret parameters
 # =========================
 X_best = df[best_features]
