@@ -91,3 +91,57 @@ Data-Dimensionality-Reduction-Models/
 │ └── README.md
 │
 └── README.md # This file
+```
+
+---
+
+## 🧪 Notebooks vs Scripts
+- **Notebooks** are used to _understand_, _explain_, and _visualize_ dimensionality reduction:
+  - step-by-step intuition
+  - plots (2D/3D embeddings, explained variance, reconstruction error)
+  - parameter sensitivity (e.g., perplexity in t-SNE)
+
+- **Scripts** are used to _implement_, _practice_, and _reinforce_ in program mode:
+  - small focused exercises (e.g., PCA from scratch)
+  - homework-ready code (clean, reproducible, runnable)
+
+Both formats are used intentionally and serve different purposes.
+
+---
+
+## 📁 Datasets
+Datasets are separated into:
+- **raw/** → original, immutable data
+- **processed/** → cleaned, scaled, encoded, or transformed data
+
+This separation ensures reproducibility and clarity of analytical decisions.
+Each dataset should be documented inside `datasets/README.md` (source, features, preprocessing, usage).
+
+---
+
+## 📘 How to Use This Repository
+Recommended workflow:
+1. Start with **theory/** for structured understanding
+2. Use **notebooks/** to see methods applied visually and step-by-step
+3. Use **scripts/** to practice implementations in program mode
+4. Store official materials and assignments in **resources/**
+5. Track datasets and transformations in **datasets/**
+
+This mirrors real analytics work:
+**understanding → experimentation → implementation → evaluation → decision support**
+
+---
+
+## 📌 Notes
+- `.venv/`, `.idea/`, and notebook checkpoint files are intentionally excluded from version control
+- Large datasets are not committed; instructions and references are provided instead
+- The repository evolves **lecture by lecture**, with consistent structure and documentation
+
+---
+
+## 👤 Author
+Graduate student in **Business Analytics / Data Analytics**, using this repository both for academic mastery and professional development.
+
+---
+
+> *"High dimensions hide structure; dimensionality reduction reveals what matters."*
