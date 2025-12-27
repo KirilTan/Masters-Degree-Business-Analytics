@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 # url with dataset
 # download the file
-data_adv = pd.read_csv('Advertising.csv')
+data_adv = pd.read_csv('../data/Advertising.csv')
 # advertising costs on TV, Radio, and Newspapers 
 # column 4 is sales 
 

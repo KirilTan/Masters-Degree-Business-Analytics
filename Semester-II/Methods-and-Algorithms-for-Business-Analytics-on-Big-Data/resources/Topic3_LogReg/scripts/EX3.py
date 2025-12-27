@@ -10,7 +10,7 @@ Created on Thu Jul 18 16:49:42 2024
 import pandas
 #load the data
 #Load the data into python
-dataset = pandas.read_csv("pima-indians-diabetes.csv", header=None)
+dataset = pandas.read_csv("../data/pima-indians-diabetes.csv", header=None)
 #print(dataset)
 # separate the data from the target attributes
 X = dataset.values[:,0:8]

@@ -9,7 +9,7 @@ Created on Sat Jul 20 11:35:41 2024
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv("pima-indians-diabetes.csv", header=None)
+data = pd.read_csv("../data/pima-indians-diabetes.csv", header=None)
 
 #print(dataset)
 # separate the data from the target attributes

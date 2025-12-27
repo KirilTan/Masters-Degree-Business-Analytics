@@ -71,7 +71,7 @@ print(' PANDAS - Load *.txt')
 import pandas
 
 #datasetTXT = pandas.read_csv("AutoInsurSweden.txt", delim_whitespace=True, decimal=',')
-datasetTXT = pandas.read_csv('AutoInsurSweden.txt', sep='\s+', decimal=',')
+datasetTXT = pandas.read_csv('../data/AutoInsurSweden.txt', sep='\s+', decimal=',')
 
 data = datasetTXT.values
 
@@ -87,7 +87,7 @@ print(' NUMPY - Load *.txt')
 
 import numpy 
 
-data = numpy.loadtxt('EX2_Data1.txt', delimiter =',')
+data = numpy.loadtxt('../data/EX2_Data1.txt', delimiter =',')
 
 x = data[:,0:2]
 y = data[:,2]
@@ -98,7 +98,7 @@ for i in range(0,100):
 #=================
 import pandas as pd
 
-dataset = pd.read_csv("ILPD.csv", delimiter =',', header=None)
+dataset = pd.read_csv("../data/ILPD.csv", delimiter =',', header=None)
 
 print(dataset.shape)
 
