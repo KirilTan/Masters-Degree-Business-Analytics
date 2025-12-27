@@ -16,7 +16,7 @@ PCA is the classic answer when:
 - you want to reduce **multicollinearity** (highly correlated predictors)
 - you want a **cleaner input** for downstream models (classification/regression)
 
-Textbook intuition: ML is essentially about finding **useful transformations / representations** of data. These transformations can include **linear projections that may destroy information**-that’s exactly what PCA is.
+Textbook intuition: ML is essentially about finding **useful transformations / representations** of data. These transformations can include **linear projections that may destroy information** - that’s exactly what PCA is.
 
 > Garzon summarizes PCA’s intent as extracting features that retain the most **variance/covariance**, flattening data into fewer dimensions (often 2D/3D) for understanding and analysis.
 
@@ -54,15 +54,16 @@ So PCA is a **linear** transformation:
 
 ### 4.1 Variance Maximization
 PCA chooses directions so that the **projected data keeps as much variance as possible**.  
-The variance captured by each PC is linked directly to **eigenvalues** of the covariance matrix. 
+The variance captured by each PC is linked directly to **eigenvalues** of the covariance matrix.
 
 ### 4.2 Reconstruction Error Minimization
 Another equivalent view:
 - compress → reconstruct  
-- PCA is the best **linear** compression (in least-squares sense)
+- PCA is the best **linear** compression (least-squares sense)
+- PCA gives the best **rank-k linear approximation** (least-squares) of the centered data
 
 This “autoencoder-like” viewpoint is common in modern ML thinking:
-- a linear encoder/decoder with squared loss becomes equivalent to PCA 
+- a linear encoder/decoder with squared loss becomes equivalent to PCA
 
 ---
 
@@ -71,21 +72,23 @@ This “autoencoder-like” viewpoint is common in modern ML thinking:
 The “standard” workflow (and what scikit-learn assumes you mean by PCA):
 
 ### ✅ Step 1: Center the data
-Subtract the mean so each feature has mean 0. 
+Subtract the mean so each feature has mean 0.
 
 ### ✅ Step 2: Standardize (usually)
-Divide by standard deviation so features become unit-free and comparable. 
+
+> If all features are already on the same scale/unit (rare in business data), centering alone may be enough; otherwise standardization is strongly recommended.
+<br>Divide by standard deviation so features become unit-free and comparable. 
 
 📌 Why this matters: If one feature is measured in big units (e.g., “income in EUR”) it can dominate variance and “hijack” PCA.
 
 ### ✅ Step 3: Compute covariance matrix + eigendecomposition (or SVD)
-PCA relies on eigenvectors/eigenvalues of the covariance matrix (or an SVD-based equivalent). 
+PCA relies on eigenvectors/eigenvalues of the covariance matrix (or an SVD-based equivalent).
 
 ### ✅ Step 4: Sort components by explained variance
 Largest eigenvalue → PC1, then PC2, etc.
 
 ### ✅ Step 5: Project onto the top *k* components
-Your new reduced features are the coordinates in the PC basis. 
+Your new reduced features are the coordinates in the PC basis.
 
 ---
 
@@ -127,11 +130,14 @@ Example shown in the lecture: **PCA + Logistic Regression** inside a pipeline, w
 - the new axes / new features (orthogonal directions)
 
 ### ✅ Loadings
+> Loadings are the component vector entries (weights) showing how original features combine to form each PC.
 - how strongly each original feature contributes to a component
 - large absolute loading ⇒ that original feature is influential for that PC
 
 ### ✅ Scores
 - your data points expressed in the PC coordinate system (the transformed data)
+
+> Note: the sign of a principal component is arbitrary (PC directions can flip sign) - variance explained stays the same.
 
 ---
 
@@ -148,30 +154,30 @@ It can struggle when:
 
 Also note the computational aspect:
 - naive eigendecomposition of a D×D covariance matrix scales poorly in very high dimensions
-- using SVD and low-rank approximations is the typical solution 
+- using SVD and low-rank approximations is the typical solution
 
 ---
 
 ## 🔟 Exam-Oriented Summary
 
 - PCA is an **unsupervised linear** dimensionality reduction method.
-- It creates **orthogonal components** ordered by **explained variance**. 
-- Practical steps: **center → (usually) standardize → eigendecompose/SVD → project**. 
-- Choose number of PCs using **scree plot** or **cumulative variance**. 
-- PCA is commonly used in ML pipelines (Lecture: PCA + Logistic Regression example). 
-- PCA optimizes variance (and equivalently minimizes reconstruction error in a linear sense). 
+- It creates **orthogonal components** ordered by **explained variance**.
+- Practical steps: **center → (usually) standardize → eigendecompose/SVD → project**.
+- Choose number of PCs using **scree plot** or **cumulative variance**.
+- PCA is commonly used in ML pipelines (Lecture: PCA + Logistic Regression example).
+- PCA optimizes variance (and equivalently minimizes reconstruction error in a linear sense).
 
 ---
 
 ## 🔑 One-Sentence Explanation
 
-> **PCA replaces many correlated features with a few orthogonal components that preserve as much variance (information) as possible.** 
+> **PCA replaces many correlated features with a few orthogonal components that preserve as much variance (information) as possible.**
 
 ---
 
 ## 🔗 References
 
 - Lecture 1 (PCA examples + pipelines)
-- Deisenroth, Faisal, Ong — *Mathematics for Machine Learning* (PCA steps, variance, SVD link) 
-- Garzon et al. — *Dimensionality Reduction in Data Science* (PCA definition + intuition) 
-- François Chollet — *Deep Learning with Python* (representations + linear projections intuition) 
+- Deisenroth, Faisal, Ong — *Mathematics for Machine Learning* (PCA steps, variance, SVD link)
+- Garzon et al. — *Dimensionality Reduction in Data Science* (PCA definition + intuition)
+- François Chollet — *Deep Learning with Python* (representations + linear projections intuition)
