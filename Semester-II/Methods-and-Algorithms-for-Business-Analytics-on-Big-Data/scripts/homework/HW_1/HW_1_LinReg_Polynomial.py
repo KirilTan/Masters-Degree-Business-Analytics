@@ -129,7 +129,7 @@ print()
 # - interaction terms (X1*X2, X1*X3, X2*X3, ...)
 # Then LinearRegression is fitted on those expanded features.
 
-degrees_to_try = [x for x in range(1,4)]
+degrees_to_try = [x for x in range(1,10)]
 poly_results = []
 
 for d in degrees_to_try:
