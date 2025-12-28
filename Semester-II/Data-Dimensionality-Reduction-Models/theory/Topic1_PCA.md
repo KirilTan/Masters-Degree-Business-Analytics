@@ -16,9 +16,9 @@ PCA is the classic answer when:
 - you want to reduce **multicollinearity** (highly correlated predictors)
 - you want a **cleaner input** for downstream models (classification/regression)
 
-Textbook intuition: ML is essentially about finding **useful transformations / representations** of data. These transformations can include **linear projections that may destroy information** - that’s exactly what PCA is.
+ML intuition (Chollet): learning is largely about finding **useful representations**. A common representation change is a **linear projection** that may discard information — that’s exactly what PCA does.
 
-> Garzon summarizes PCA’s intent as extracting features that retain the most **variance/covariance**, flattening data into fewer dimensions (often 2D/3D) for understanding and analysis.
+> Garzon summarizes PCA as extracting features that retain as much **variance/covariance structure** as possible, flattening data into fewer dimensions (often 2D/3D) for understanding and analysis.
 
 ---
 
@@ -34,10 +34,10 @@ These axes are the **principal components (PCs)**.
 
 Imagine a cloud of points in 2D/3D:
 - In the original axes, the cloud might look “tilted”
-- PCA **rotates** the axes to align with the direction where the cloud spreads out the most
+- PCA **rotates** the axes to align with the directions where the cloud spreads out most
 
 ### ✅ PC1 (First Principal Component)
-- Direction that maximizes the variance of the projected data  
+- Direction that maximizes variance of the projected data  
 - “Where the data varies the most”
 
 ### ✅ PC2, PC3, …
@@ -62,8 +62,8 @@ Another equivalent view:
 - PCA is the best **linear** compression (least-squares sense)
 - PCA gives the best **rank-k linear approximation** (least-squares) of the centered data
 
-This “autoencoder-like” viewpoint is common in modern ML thinking:
-- a linear encoder/decoder with squared loss becomes equivalent to PCA
+This is the “linear autoencoder” intuition:
+- a linear encoder/decoder trained with squared error becomes equivalent to PCA
 
 ---
 
@@ -75,14 +75,24 @@ The “standard” workflow (and what scikit-learn assumes you mean by PCA):
 Subtract the mean so each feature has mean 0.
 
 ### ✅ Step 2: Standardize (usually)
+If features are on different scales/units, standardize using:
 
+$$
+z = \frac{x - \mu}{\sigma}
+$$
+
+- \(x\): original value  
+- \(\mu\): feature mean  
+- \(\sigma\): feature standard deviation
+- 
 > If all features are already on the same scale/unit (rare in business data), centering alone may be enough; otherwise standardization is strongly recommended.
 <br>Divide by standard deviation so features become unit-free and comparable. 
 
-📌 Why this matters: If one feature is measured in big units (e.g., “income in EUR”) it can dominate variance and “hijack” PCA.
+📌 Why: PCA is variance-based, so large-unit features can dominate and “hijack” PCA.
 
-### ✅ Step 3: Compute covariance matrix + eigendecomposition (or SVD)
-PCA relies on eigenvectors/eigenvalues of the covariance matrix (or an SVD-based equivalent).
+### ✅ Step 3: Compute PCA via covariance eigendecomposition or SVD
+- Eigendecomposition of covariance matrix (classic explanation)
+- **SVD** is often preferred numerically and for high dimensions
 
 ### ✅ Step 4: Sort components by explained variance
 Largest eigenvalue → PC1, then PC2, etc.
@@ -99,7 +109,8 @@ Each component has:
 
 Common selection rules:
 - **Scree plot**: look for the “elbow”
-- **Cumulative variance threshold**: keep enough PCs to reach e.g. 90–95%
+- **Cumulative variance threshold**: keep enough PCs for 90–95% variance
+- **Task-based (recommended)**: pick $k$ that performs best in cross-validation
 
 ### ⚠️ Important nuance
 Explained variance is not the same as “useful for prediction.”
@@ -158,7 +169,7 @@ Also note the computational aspect:
 
 ---
 
-## 🔟 Exam-Oriented Summary
+## 11 Exam-Oriented Summary
 
 - PCA is an **unsupervised linear** dimensionality reduction method.
 - It creates **orthogonal components** ordered by **explained variance**.
